@@ -26,10 +26,10 @@ public class TestBase {
     }
 
     @BeforeEach
-    @Step("Открываем главную страницу сервиса чистоты Домовенок")
+    @Step("Открываем главную страницу сервиса")
     void setUp() {
         Configuration.browserSize = "1920x1080";
-        Selenide.open("https://www.domovenok.ru/");
+        Selenide.open("https://habr.com/ru/feed/");
         Configuration.pageLoadStrategy = "eager";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
