@@ -1,74 +1,54 @@
 package pages;
 
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class ArticleSearchPage {
     private final SelenideElement
-            emailInput = $("input[name='email']"),
-            passwordInput = $("input[name='password']"),
-            captchaCheckbox = $(".CheckboxCaptcha-Button"),
-            authorizationSubmitButton = $("[class='button button_wide button_primary']"),
-            captchaError = $(".s-error"),
-            emailError = $("#ident-alert"),
-            passwordError = $("#ident-alert");
+            articleName = $("[class='tm-search__input tm-input-text-decorated__input']"),
+            emptyArticleSearch = $("[data-test-id='empty-placeholder-text']"),
+            keyWordArticleSearch = $("[class='tm-search__input tm-input-text-decorated__input']");
 
+
+    private final ElementsCollection
+            articleSearchSuccessCheck = $$("[data-test-id='articles-list']");//как исправить тип так, чтобы коллекци валидно отображалась?
 
     @Step("Перейти на страницу авторизации пользователя")
-    public ArticleSearchPage openAuthorizationPage() {
-        open("https://account.habr.com/ru/ident/");
+    public ArticleSearchPage openArticleSearchPage() {
+        open("/search/");
         return this;
     }
 
-    @Step("Заполнить логин пользователя")
-    public ArticleSearchPage setEmail(String value) {
-        emailInput.setValue(value);
+    @Step("Поиск значения")
+    public ArticleSearchPage setArticleName(String value) {
+        articleName.setValue(value).pressEnter();
         return this;
     }
 
-    @Step("Заполнить пароль пользователя")
-    public ArticleSearchPage setPassword(String value) {
-        passwordInput.setValue(value);
+    @Step("Пустой результат поиска")
+    public ArticleSearchPage emptyArticleSearch() {
+        emptyArticleSearch.shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("К сожалению, здесь пока нет ни одной публикации"));
         return this;
     }
 
-    @Step("Доказать, что не робот")
-    public ArticleSearchPage passCaptcha() {
-        captchaCheckbox.click();
+    @Step("Результат поиска не пустой")
+    public ArticleSearchPage articleSearchSuccessCheck() {
+        articleSearchSuccessCheck.shouldBe(sizeGreaterThan(0));
         return this;
     }
 
-    @Step("Нажать на кнопку 'Войти'")
-    public ArticleSearchPage pressSubmitButton() {
-        authorizationSubmitButton.click();
+    @Step("Поиск статьи по ключевому слою")
+    public ArticleSearchPage keyWordArticleSearchSuccessCheck() {
+        keyWordArticleSearch.
+                articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
         return this;
     }
-
-    @Step("Не отмечать чекбокс 'Я не робот'")
-    public ArticleSearchPage captchaErrorCheck() {
-        captchaError.shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("Необходимо пройти капчу"));
-        return this;
-    }
-
-    @Step("Ошибка, если введен некорректный логин")
-    public ArticleSearchPage emailErrorCheck() {
-        emailError.shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("Неизвестное сочетание email и пароля"));
-        return this;
-    }
-
-    @Step("Ошибка, если введен некорректный пароль")
-    public ArticleSearchPage passwordErrorCheck() {
-        passwordError.shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("Неизвестное сочетание email и пароля"));
-        return this;
-    }
-
-
-
 }

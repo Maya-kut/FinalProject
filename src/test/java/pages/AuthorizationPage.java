@@ -25,7 +25,7 @@ public class AuthorizationPage {
 
     @Step("Перейти на страницу авторизации пользователя")
     public AuthorizationPage openAuthorizationPage() {
-        open("https://account.habr.com/ru/ident/");
+        open("/ident/");
         return this;
     }
 

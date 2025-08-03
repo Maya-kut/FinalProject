@@ -29,7 +29,7 @@ public class TestBase {
     @Step("Открываем главную страницу сервиса")
     void setUp() {
         Configuration.browserSize = "1920x1080";
-        Selenide.open("https://habr.com/ru/feed/");
+        Selenide.open("https://habr.com/ru");
         Configuration.pageLoadStrategy = "eager";
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
