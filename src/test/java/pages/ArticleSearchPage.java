@@ -47,8 +47,7 @@ public class ArticleSearchPage {
 
     @Step("Поиск статьи по ключевому слою")
     public ArticleSearchPage keyWordArticleSearchSuccessCheck() {
-        keyWordArticleSearch.
-                articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
+        keyWordArticleSearch.articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
         return this;
     }
 }

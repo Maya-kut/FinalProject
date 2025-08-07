@@ -6,7 +6,6 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.ArticleSearchPage;
-import testData.ArticleSearchTestData;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
@@ -17,7 +16,6 @@ import static io.qameta.allure.Allure.step;
 public class ArticleSearchTests extends TestBase {
 
     ArticleSearchPage articleSearchPage = new ArticleSearchPage();
-    ArticleSearchTestData articleSearchTestData = new ArticleSearchTestData();
 
 
     @DisplayName("Проверить, что при поиске по существующему значению, результат поиска не будет равен 0")
@@ -28,7 +26,7 @@ public class ArticleSearchTests extends TestBase {
     void searchResultsNotEmpty(String articleName) {
         step("Ввод значения для поиска", () -> {
             articleSearchPage.openArticleSearchPage()
-                    .setArticleName(articleSearchTestData.getRandomValue(articleName));//как взять рандомное значение из списка?
+                    .setArticleName(articleName);
 
         });
         step("Проверка, что результат поиска не пустой", () -> {
