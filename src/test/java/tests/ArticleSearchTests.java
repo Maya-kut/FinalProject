@@ -7,7 +7,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.ArticleSearchPage;
 
-@Tag("simple")
+@Tag("web")
 @DisplayName("Тесты на поиск статей в Хабр")//добавить шаги
 public class ArticleSearchTests extends TestBase {
 
