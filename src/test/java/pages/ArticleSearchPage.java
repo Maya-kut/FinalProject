@@ -45,9 +45,9 @@ public class ArticleSearchPage {
         return this;
     }
 
-    @Step("Поиск статьи по ключевому слою")
-    public ArticleSearchPage keyWordArticleSearchSuccessCheck() {
-        keyWordArticleSearch.articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
-        return this;
-    }
+//    @Step("Поиск статьи по ключевому слову")
+//    public ArticleSearchPage keyWordArticleSearchSuccessCheck() {
+//        keyWordArticleSearch.articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
+//        return this;
+//    }
 }

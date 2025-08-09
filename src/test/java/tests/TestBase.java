@@ -28,6 +28,7 @@ public class TestBase {
     @BeforeEach
     @Step("Открываем главную страницу сервиса")
     void setUp() {
+        Configuration.browser = "chrome";
         Configuration.browserSize = "1920x1080";
         Selenide.open("https://habr.com/ru");
         Configuration.pageLoadStrategy = "eager";

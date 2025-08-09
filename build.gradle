@@ -3,8 +3,12 @@ plugins {
     id 'io.qameta.allure' version '2.12.0'
 }
 def allureVersion = "2.21.0",
+    selenideVersion = "6.19.1",
+    junitVersion = "5.10.0",
     slf4jVersion = "2.0.7",
-    selenideVersion = "7.7.3"
+    ownerVersion = "1.0.12",
+    assertjCoreVersion = "3.23.1",
+    webdriverVersion = "5.5.3"
 
 allure {
     report { //секция репорта
@@ -33,24 +37,41 @@ compileTestJava {
     options.encoding = 'UTF-8'
 }
 
+//dependencies {
+//    implementation "org.jetbrains:annotations:20.1.0"
+//    testImplementation(
+//            "com.codeborne:selenide:6.13.0",
+//            "org.junit.jupiter:junit-jupiter:5.9.2",
+//            "org.slf4j:slf4j-simple:$slf4jVersion",
+//            "com.github.javafaker:javafaker:1.0.2",
+//            "com.codeborne:pdf-test:1.5.0",
+//            "com.codeborne:xls-test:1.4.3",
+//            "com.opencsv:opencsv:5.7.1",
+//            "com.google.code.gson:gson:2.10.1",
+//            "com.fasterxml.jackson.core:jackson-databind:2.13.1",
+//            "com.fasterxml.jackson.core:jackson-core:2.13.1",
+//            "org.aeonbits.owner:owner:1.0.12",
+//            "org.aspectj:aspectjweaver:1.9.19",
+//            "io.qameta.allure:allure-selenide:$allureVersion"
+//
+//    )
+//}
+
 dependencies {
-    implementation "org.jetbrains:annotations:20.1.0"
     testImplementation(
-            "com.codeborne:selenide:6.13.0",
-            "org.junit.jupiter:junit-jupiter:5.9.2",
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.slf4j:slf4j-simple:$slf4jVersion",
-            "com.github.javafaker:javafaker:1.0.2",
-            "com.codeborne:pdf-test:1.5.0",
-            "com.codeborne:xls-test:1.4.3",
-            "com.opencsv:opencsv:5.7.1",
-            "com.google.code.gson:gson:2.10.1",
-            "com.fasterxml.jackson.core:jackson-databind:2.13.1",
-            "com.fasterxml.jackson.core:jackson-core:2.13.1",
-            "org.aeonbits.owner:owner:1.0.12",
-            "org.aspectj:aspectjweaver:1.9.19",
-            "io.qameta.allure:allure-selenide:$allureVersion"
+            "org.assertj:assertj-core:$assertjCoreVersion",
+            "io.github.bonigarcia:webdrivermanager:$webdriverVersion",
+            "org.aeonbits.owner:owner:$ownerVersion",
+            "commons-io:commons-io:2.6"
 
     )
+}
+dependencies {
+    implementation 'com.github.javafaker:javafaker:1.0.2'
 }
 
 tasks.withType(JavaCompile) {
