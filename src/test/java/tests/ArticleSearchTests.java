@@ -33,9 +33,19 @@ public class ArticleSearchTests extends TestBase {
         {
             articleSearchPage.openArticleSearchPage()
                     .setArticleNameInput(keyWord);
-            articleSearchPage.keyWordArticleSearchCheck();
+            articleSearchPage.keyWordArticleSearchCheck(article);
         }
     }
 
+    @DisplayName("Проверить, что при поиске по несуществующему значению, результат поиска будет равен 0")
+    @ValueSource(strings = {
+            "e-r-r-o-r", "о-ш-и-б-к-а-п-о-и-с-к-а"
+    })
+    @ParameterizedTest(name = "Для поискового запроса {0} должен отдаваться пустой список статей и сообщение об отсутствии публикаций")
+    void searchResultsIsEmpty(String forEmptyResult) {
+        articleSearchPage.openArticleSearchPage()
+                .setArticleNameInput(forEmptyResult);
+        articleSearchPage.emptyArticleSearch();
 
+    }
 }
