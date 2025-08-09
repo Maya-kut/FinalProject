@@ -13,24 +13,22 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class ArticleSearchPage {
     private final SelenideElement
-            articleName = $("[class='tm-search__input tm-input-text-decorated__input']"),
-            emptyArticleSearch = $("[data-test-id='empty-placeholder-text']"),
-            keyWordArticleSearch = $("[class='tm-search__input tm-input-text-decorated__input']");
+            articleNameInput = $("[class='tm-search__input tm-input-text-decorated__input']"),
+            emptyArticleSearch = $("[data-test-id='empty-placeholder-text']");
 
 
     private final ElementsCollection
-            articleSearchSuccessCheck = $$("[data-test-id='articles-list']");//как исправить тип так, чтобы коллекци валидно отображалась?
+            articleSearchSuccessCheck = $$("[data-test-id='articles-list']");
 
-    @Step("Перейти на страницу авторизации пользователя")
+    @Step("Перейти на страницу поиска статей")
     public ArticleSearchPage openArticleSearchPage() {
         open("/search/");
         return this;
     }
 
-    @Step("Поиск значения")
-    public ArticleSearchPage setArticleName(String value) {
-        articleName.setValue(value).pressEnter();
-        return this;
+    @Step("Ввод значения и запуск поиска")
+    public void setArticleNameInput(String value) {
+        articleNameInput.setValue(value).pressEnter();
     }
 
     @Step("Пустой результат поиска")
@@ -40,14 +38,14 @@ public class ArticleSearchPage {
     }
 
     @Step("Результат поиска не пустой")
-    public ArticleSearchPage articleSearchSuccessCheck() {
+    public void articleSearchCheck() {
         articleSearchSuccessCheck.shouldBe(sizeGreaterThan(0));
-        return this;
     }
 
-//    @Step("Поиск статьи по ключевому слову")
-//    public ArticleSearchPage keyWordArticleSearchSuccessCheck() {
-//        keyWordArticleSearch.articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
-//        return this;
-//    }
+    @Step("Поиск статьи по ключевому слову")
+    public void keyWordArticleSearchCheck() {
+        articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
+    }
+
+
 }
