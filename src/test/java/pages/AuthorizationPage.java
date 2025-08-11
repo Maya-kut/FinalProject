@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class AuthorizationPage {
     private final SelenideElement
-            emailInput = $("input[name='email']"),
+            emailInput = $("input[type='email'][name='email'][form='ident-form']"),
             passwordInput = $("input[name='password']"),
             captchaCheckbox = $(".CheckboxCaptcha-Button"),
             authorizationSubmitButton = $("[class='button button_wide button_primary']"),
@@ -25,7 +25,7 @@ public class AuthorizationPage {
 
     @Step("Перейти на страницу авторизации пользователя")
     public AuthorizationPage openAuthorizationPage() {
-        open("/ident/");
+        open("https://account.habr.com/ru/ident/bYplturosbj41YuH2AFXb01KRKQ-vdD7bQzEnxStLr7ST5On-xaZBY8XOqngQEN1b9fY8ljpC0DiGovGmmGlwvXGluEV7CJbupz3J93FcfCVYChMjYE1TAP-js9b1Tq_asnqEnpEhWzTz-27FY4LhwoRUPTQ5ZW89gJ43BpnOAZ5EJseLM5um8l8TBpraAq2q2NnIRjA7Ut-IdwQ");
         return this;
     }
 

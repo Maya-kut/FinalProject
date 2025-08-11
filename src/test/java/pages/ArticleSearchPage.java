@@ -22,7 +22,7 @@ public class ArticleSearchPage {
 
     @Step("Перейти на страницу поиска статей")
     public ArticleSearchPage openArticleSearchPage() {
-        open("/search/");
+        open("https://habr.com/ru/search/");
         return this;
     }
 

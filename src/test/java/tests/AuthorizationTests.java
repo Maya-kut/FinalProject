@@ -14,7 +14,7 @@ public class AuthorizationTests extends TestBase {
 
     @Test
     @DisplayName("Успешная авторизация")
-    void succesfullAuth() {
+    void succesfullAuthTest() {
         authorizationPage.openAuthorizationPage()
                 .setEmail(authorizationTestData.userEmail)
                 .setPassword(authorizationTestData.userPassword)
@@ -25,7 +25,7 @@ public class AuthorizationTests extends TestBase {
 
     @Test
     @DisplayName("Проверка получения сообщения об ошибке при непроставлении чекбокса 'Я не робот'")
-    void iAmRobot() {
+    void iAmRobotTest() {
         authorizationPage.openAuthorizationPage()
                 .setEmail(authorizationTestData.userEmail)
                 .setPassword(authorizationTestData.userPassword)
@@ -36,7 +36,7 @@ public class AuthorizationTests extends TestBase {
 
     @Test
     @DisplayName("Проверка получения сообщения об ошибке при попытке авторизации без логина")
-    void authorizationWithOutEmail() {
+    void authorizationWithOutEmailTest() {
         authorizationPage.openAuthorizationPage()
                 .setPassword(authorizationTestData.userPassword)
                 .passCaptcha()
@@ -46,7 +46,7 @@ public class AuthorizationTests extends TestBase {
 
     @Test
     @DisplayName("Проверка получения сообщения об ошибке при попытке авторизации без пароля")
-    void authorizationWithOutPassword() {
+    void authorizationWithOutPasswordTest() {
         authorizationPage.openAuthorizationPage()
                 .setEmail(authorizationTestData.userEmail)
                 .passCaptcha()

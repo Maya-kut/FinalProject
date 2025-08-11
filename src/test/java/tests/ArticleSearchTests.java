@@ -19,7 +19,7 @@ public class ArticleSearchTests extends TestBase {
             "Ситидрайв", "ИИ в тестировании ПО", "освоение космоса"
     })
     @ParameterizedTest(name = "Для поискового запроса {0} должен отдаваться не пустой список статей")
-    void searchResultsNotEmpty(String articleName) {
+    void searchResultsNotEmptyTest(String articleName) {
         articleSearchPage.openArticleSearchPage()
                 .setArticleNameInput(articleName);
         articleSearchPage.articleSearchCheck();
@@ -29,7 +29,7 @@ public class ArticleSearchTests extends TestBase {
     @DisplayName("Проверить, что при поиске по ключевому слову, будут найдены определенные статьи")
     @CsvFileSource(resources = "/searchResultsShouldContainValue.csv")
     @ParameterizedTest(name = "Для ключевого слова {0} должна быть статья {1}")
-    void keyWordArticleSearchSuccessCheck(String keyWord, String article) {
+    void keyWordArticleSearchSuccessCheckTest(String keyWord, String article) {
         {
             articleSearchPage.openArticleSearchPage()
                     .setArticleNameInput(keyWord);
@@ -42,7 +42,7 @@ public class ArticleSearchTests extends TestBase {
             "e-r-r-o-r", "о-ш-и-б-к-а-п-о-и-с-к-а"
     })
     @ParameterizedTest(name = "Для поискового запроса {0} должен отдаваться пустой список статей и сообщение об отсутствии публикаций")
-    void searchResultsIsEmpty(String forEmptyResult) {
+    void searchResultsIsEmptyTest(String forEmptyResult) {
         articleSearchPage.openArticleSearchPage()
                 .setArticleNameInput(forEmptyResult);
         articleSearchPage.emptyArticleSearch();
