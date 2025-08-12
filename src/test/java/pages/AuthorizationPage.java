@@ -22,7 +22,7 @@ public class AuthorizationPage {
             passwordError = $("#ident-alert"),
             successAuthorizationText = $(".CheckboxCaptcha-Button"),
             authorizationNameBox = $("[class='shadow-box']"),
-            openAuthorizationDropDown = $("[id='burger-control']");
+            openAuthorizationDropDown = $("[id='dropdown-control']");
 
     private final ElementsCollection
             authorizationBox = $$("[class='form__fields mt-4']"),
@@ -93,7 +93,13 @@ public class AuthorizationPage {
     @Step("Проверка наличия заявленных элементов в форме авторизации. Выпадающий список")
     public AuthorizationPage authorizationDropDown() {
         authorizationDropDown.shouldHave(CollectionCondition.texts(
-                "Все сервисы Хабра Пароль Войти Забыли пароль? Или войдите с помощью других сервисов"
+                "Все сервисы Хабра\n" +
+                        "\n" +
+                        "Сообщество IT-специалистов\n" +
+                        "\n" +
+                        "Ответы на любые вопросы об IT\n" +
+                        "\n" +
+                        "Профессиональное развитие в IT"
         ));
         return this;
     }
