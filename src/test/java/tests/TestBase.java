@@ -26,7 +26,6 @@ public class TestBase {
     }
 
     @BeforeEach
-    @Step("Открываем главную страницу сервиса")
     void setUp() {
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserVersion = System.getProperty("browserVersion", "128.0");
