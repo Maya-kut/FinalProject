@@ -16,7 +16,7 @@ public class AuthorizationPage {
     private final SelenideElement
             emailInput = $("[id='ident-form'] [type='email']"),
             passwordInput = $("[id='ident-form'] [name='password']"),
-            captchaCheckbox = $(".CheckboxCaptcha-Button"),
+            captchaCheckbox = $("[data-testid=\"checkbox-iframe\"]"),
             authorizationSubmitButton = $("[class='button button_wide button_primary']"),
             captchaError = $(".s-error"),
             emailError = $("#ident-alert"),
@@ -26,7 +26,7 @@ public class AuthorizationPage {
 
     @Step("Перейти на страницу авторизации пользователя")
     public AuthorizationPage openAuthorizationPage() {
-        open("https://account.habr.com/ru/ident/bYplturosbj41YuH2AFXb01KRKQ-vdD7bQzEnxStLr7ST5On-xaZBY8XOqngQEN1b9fY8ljpC0DiGovGmmGlwvXGluEV7CJbupz3J93FcfCVYChMjYE1TAP-js9b1Tq_asnqEnpEhWzTz-27FY4LhwoRUPTQ5ZW89gJ43BpnOAZ5EJseLM5um8l8TBpraAq2q2NnIRjA7Ut-IdwQ");
+        open("https://account.habr.com/ru/");
         return this;
     }
 
