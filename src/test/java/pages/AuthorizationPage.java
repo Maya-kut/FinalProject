@@ -1,16 +1,15 @@
 package pages;
 
+import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-import org.openqa.selenium.By;
-import testData.AuthorizationTestData;
 
 import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class AuthorizationPage {
     private final SelenideElement
@@ -21,8 +20,13 @@ public class AuthorizationPage {
             captchaError = $(".s-error"),
             emailError = $("#ident-alert"),
             passwordError = $("#ident-alert"),
-            successAuthorizationText = $(".CheckboxCaptcha-Button");
+            successAuthorizationText = $(".CheckboxCaptcha-Button"),
+            authorizationNameBox = $("[class='shadow-box']"),
+            openAuthorizationDropDown = $("[id='burger-control']");
 
+    private final ElementsCollection
+            authorizationBox = $$("[class='form__fields mt-4']"),
+            authorizationDropDown = $$("[class='dropdown']");
 
     @Step("Перейти на страницу авторизации пользователя")
     public AuthorizationPage openAuthorizationPage() {
@@ -80,6 +84,33 @@ public class AuthorizationPage {
         return this;
     }
 
+    @Step("Открытие выпадающего списка на странице авторизации")
+    public AuthorizationPage openDropDown() {
+        openAuthorizationDropDown.click();;
+        return this;
+    }
+
+    @Step("Проверка наличия заявленных элементов в форме авторизации. Выпадающий список")
+    public AuthorizationPage authorizationDropDown() {
+        authorizationDropDown.shouldHave(CollectionCondition.texts(
+                "Все сервисы Хабра Пароль Войти Забыли пароль? Или войдите с помощью других сервисов"
+        ));
+        return this;
+    }
+
+    @Step("Проверка наличия заявленных элементов в форме авторизации. Название")
+    public AuthorizationPage authorizationBoxNameCheck() {
+        authorizationNameBox.shouldBe(visible, Duration.ofSeconds(10)).shouldHave(text("Вход"));
+        return this;
+    }
+
+    @Step("Проверка наличия заявленных элементов в форме авторизации. Поля")
+    public AuthorizationPage authorizationBoxCheck() {
+        authorizationBox.shouldHave(CollectionCondition.texts(
+                "Email Пароль Войти Забыли пароль? Или войдите с помощью других сервисов"
+        ));
+        return this;
+    }
 
 
 }

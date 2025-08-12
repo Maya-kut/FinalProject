@@ -21,7 +21,7 @@ public class AuthorizationTests extends TestBase {
                 .setEmail(authorizationTestData.userEmail)
                 .setPassword(authorizationTestData.userPassword)
                 .passCaptcha()
-                .pressSubmitButton();
+                .pressSubmitButton();//в норме, капча не открывается и не перекрывает эту кнопку, но при запуске тестов капча все же открыватеся
         authorizationPage.authorizationSuccessCheck();
     }
 
@@ -56,5 +56,30 @@ public class AuthorizationTests extends TestBase {
 
         authorizationPage.passwordErrorCheck();
 
+    }
+
+    @Test
+    @DisplayName("Проверка названия формы авторизации. Название")
+    void authorizationBoxNameCheckTest() {
+        authorizationPage.openAuthorizationPage();
+
+        authorizationPage.authorizationBoxNameCheck();
+    }
+
+    @Test
+    @DisplayName("Проверка наполнения формы авторизации. Поля")
+    void authorizationBoxCheckTest() {
+        authorizationPage.openAuthorizationPage();
+
+        authorizationPage.authorizationBoxCheck();
+    }
+
+    @Test
+    @DisplayName("Проверка наполнения формы авторизации. Выпадающий список")
+    void authorizationHeaderCheckTest() {
+        authorizationPage.openAuthorizationPage();
+        authorizationPage.openDropDown();
+
+        authorizationPage.authorizationDropDown();
     }
 }
