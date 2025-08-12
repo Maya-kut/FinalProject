@@ -1,5 +1,6 @@
 package tests;
 
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.ValueSource;
 import pages.ArticleSearchPage;
 
+@Owner("Maiya_Lys")
 @Tag("web")
 @DisplayName("Тесты на поиск статей в Хабр")//добавить шаги
 public class ArticleSearchTests extends TestBase {

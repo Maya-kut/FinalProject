@@ -1,11 +1,13 @@
 package tests;
 
+import io.qameta.allure.Owner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.AuthorizationPage;
 import testData.AuthorizationTestData;
 
+@Owner("Maiya_Lys")
 @Tag("web")
 @DisplayName("Тесты на авторизацию в Хабр")
 public class AuthorizationTests extends TestBase {

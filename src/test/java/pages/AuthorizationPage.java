@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+import org.openqa.selenium.By;
 import testData.AuthorizationTestData;
 
 import java.time.Duration;
@@ -13,8 +14,8 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class AuthorizationPage {
     private final SelenideElement
-            emailInput = $("input[type='email'][name='email'][form='ident-form']"),
-            passwordInput = $("input[name='password']"),
+            emailInput = $("[id='ident-form'] [type='email']"),
+            passwordInput = $("[id='ident-form'] [name='password']"),
             captchaCheckbox = $(".CheckboxCaptcha-Button"),
             authorizationSubmitButton = $("[class='button button_wide button_primary']"),
             captchaError = $(".s-error"),
