@@ -22,7 +22,7 @@ public class AuthorizationPage {
             passwordError = $("#ident-alert"),
             successAuthorizationText = $(".CheckboxCaptcha-Button"),
             authorizationNameBox = $("[class='shadow-box']"),
-            openAuthorizationDropDown = $("[id='dropdown-control']");
+            openAuthorizationDropDown = $("[id='burger-control']");
 
     private final ElementsCollection
             authorizationBox = $$("[class='form__fields mt-4']"),
