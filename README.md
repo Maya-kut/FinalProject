@@ -100,7 +100,7 @@
 
 <p align="center">
 <img src="images/тесты.png">
-<img src="images/упавший тест.png">
+<img src="images/down.png">
 </p>
 
 <a id="telegram"></a>
