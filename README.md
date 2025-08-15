@@ -92,7 +92,7 @@
 ### Графики
 
 <p align="center">
-<img src="images/результат прогона.png">
+<img src="images/result1.png.png">
 <img src="images/результат прогона 2.png">
 </p>
 
