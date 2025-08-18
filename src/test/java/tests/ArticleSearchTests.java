@@ -10,7 +10,7 @@ import pages.ArticleSearchPage;
 
 @Owner("Maiya_Lys")
 @Tag("web")
-@DisplayName("Тесты на поиск статей в Хабр")//добавить шаги
+@DisplayName("Тесты на поиск статей в Хабр")
 public class ArticleSearchTests extends TestBase {
 
     ArticleSearchPage articleSearchPage = new ArticleSearchPage();

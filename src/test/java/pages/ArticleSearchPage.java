@@ -44,7 +44,7 @@ public class ArticleSearchPage {
 
     @Step("Результат поиска по ключевому слову")
     public void keyWordArticleSearchCheck(String article) {
-        articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));//как тут правильно передать переменную, чтобы было сравнение название и результат поиска?
+        articleSearchSuccessCheck.findBy(text(article)).shouldHave(text(article));
     }
 
 
