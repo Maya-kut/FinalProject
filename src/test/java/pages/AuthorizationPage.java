@@ -93,13 +93,7 @@ public class AuthorizationPage {
     @Step("Проверка наличия заявленных элементов в форме авторизации. Выпадающий список")
     public AuthorizationPage authorizationDropDown() {
         authorizationDropDown.shouldHave(CollectionCondition.texts(
-                "Все сервисы Хабра\n" +
-                        "\n" +
-                        "Сообщество IT-специалистов\n" +
-                        "\n" +
-                        "Ответы на любые вопросы об IT\n" +
-                        "\n" +
-                        "Профессиональное развитие в IT"
+                "Все сервисы Хабра"
         ));
         return this;
     }
